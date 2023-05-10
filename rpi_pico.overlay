@@ -1,0 +1,12 @@
+
+&i2c0 {
+	
+	bme680@77 {
+		compatible = "bosch,bme680";
+		reg = <0x77>;
+	};
+	veml7700@10 {
+		compatible = "vishay,veml7700";
+		reg =<0x10>;
+	};
+};
