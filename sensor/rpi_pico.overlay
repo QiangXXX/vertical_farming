@@ -1,0 +1,32 @@
+#include <zephyr/dt-bindings/adc/adc.h>
+
+/ {
+	zephyr,user {
+		io-channels = <&adc 0>;
+	};
+};
+
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
+};
+
+&i2c0 {
+	status = "okay";
+	veml7700@10 {
+		compatible = "veml7700";
+		reg = <0x10>;
+	};
+	bme680@77 {
+		compatible = "bosch,bme680";
+		reg = <0x77>;
+	};
+};
